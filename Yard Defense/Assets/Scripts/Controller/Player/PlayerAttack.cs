@@ -22,14 +22,14 @@ namespace YardDefense.Player
             if (timer > playerInfo.AttackFrequency)
             {
                 timer -= playerInfo.AttackFrequency;
-                EventManager.Instance.PlayerAttack(playerInfo.AttackDamage);
+                EventManager.Instance.PlayerAttack(playerInfo.Attack);
             }
 
             //Manual attacking (via clicks)
 #if !UNITY_IOS && !UNITY_ANDROID
             if (Input.GetMouseButtonDown(0))
             {
-                EventManager.Instance.PlayerAttack(playerInfo.AttackDamage);
+                EventManager.Instance.PlayerAttack(playerInfo.Attack);
             }
 #endif
         }

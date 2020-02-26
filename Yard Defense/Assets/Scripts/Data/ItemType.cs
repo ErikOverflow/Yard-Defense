@@ -5,8 +5,10 @@ using UnityEngine;
 
 namespace YardDefense
 {
-    public class ItemInfo : MonoBehaviour
+    [Serializable]
+    public enum ItemType
     {
-        [SerializeField] ItemData itemData;
+        Collar = 1,
+        Toy = 2
     }
 }
