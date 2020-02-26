@@ -5,7 +5,7 @@ using UnityEngine;
 #pragma warning disable 649
 namespace YardDefense.Player
 {
-    public class PlayerHealthController : MonoBehaviour
+    public class PlayerHealth : MonoBehaviour
     {
         [SerializeField] PlayerBattleInfo playerBattleInfo;
         [SerializeField] float healFrequency = 1.0f;

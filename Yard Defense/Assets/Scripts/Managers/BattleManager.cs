@@ -14,7 +14,7 @@ namespace YardDefense
         public static BattleManager Instance;
         [SerializeField] PlayerStatsInfo playerInfo;
         
-        MobSO mob;
+        [SerializeField] MobSO mob;
         
         public MobSO MobSO { get => mob; }
         public PlayerStatsInfo PlayerStatsInfo { get=> playerInfo; }
@@ -29,7 +29,7 @@ namespace YardDefense
                 return;
             }
         }
-        
+
         //Start a battle against the mob
         public void StartBattle(MobSO _mob)
         {
