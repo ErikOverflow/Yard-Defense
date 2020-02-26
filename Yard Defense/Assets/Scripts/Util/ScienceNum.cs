@@ -33,8 +33,7 @@ namespace YardDefense
             int eChange = Mathf.FloorToInt(Mathf.Log10(Mathf.Abs(sn1.baseValue)));
             sn1.baseValue /= Mathf.Pow(10, eChange);
             sn1.eFactor += eChange;
-            return sn1;
-            return sn1;
+            return sn1;            
         }
 
         public static ScienceNum operator -(ScienceNum sn1, ScienceNum sn2)

@@ -2,13 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using YardDefense.Mob;
+using YardDefense.Player;
 
+#pragma warning disable 649
 namespace YardDefense
 {
     public class BattleManager : MonoBehaviour
     {
         public static BattleManager Instance;
-        [SerializeField] PlayerInfo playerInfo;
+        [SerializeField] PlayerStatsInfo playerInfo;
         
         MobSO mob;
         
@@ -17,7 +21,7 @@ namespace YardDefense
         
         void Awake()
         {
-            if(instance == null)
+            if(Instance == null)
                 Instance = this;
             else
             {

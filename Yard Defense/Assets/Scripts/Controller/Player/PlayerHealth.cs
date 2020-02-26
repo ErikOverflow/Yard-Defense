@@ -25,9 +25,9 @@ namespace YardDefense.Player
         //Taking damage from Events
         private void TakeDamage(ScienceNum damageAmount)
         {
-            damageAmount -= playerBattleInfo.defense;
-            if(damageAmount < 0)
-                damageAmount = 0;
+            damageAmount -= playerBattleInfo.Defense;
+            if(damageAmount.baseValue < 0)
+                damageAmount.baseValue = 0;
             playerBattleInfo.ChangeHealth(playerBattleInfo.CurrentHealth - damageAmount);
         }
         

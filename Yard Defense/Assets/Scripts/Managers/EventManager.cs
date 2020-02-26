@@ -13,7 +13,7 @@ namespace YardDefense
 
         private void Awake()
         {
-            if(instance == null)
+            if(Instance == null)
                 Instance = this;
             else
                 Destroy(this);
