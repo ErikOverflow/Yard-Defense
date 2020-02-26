@@ -15,6 +15,7 @@ namespace YardDefense.Mob
             Initialize(_mobSO);
         }
 
+        //This should be initialized by a spawner in the future
         public void Initialize(MobSO mobSO)
         {
             spriteRenderer.sprite = mobSO.sprite;

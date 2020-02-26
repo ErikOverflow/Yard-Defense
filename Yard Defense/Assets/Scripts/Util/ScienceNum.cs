@@ -65,6 +65,20 @@ namespace YardDefense
         {
             return baseValue * Mathf.Pow(10, eFactor);
         }
+
+        public override string ToString()
+        {
+            return String.Format("{0}e{1}", baseValue, eFactor);
+        }
+
+        public static ScienceNum FromString(string str)
+        {
+            ScienceNum scienceNum = new ScienceNum();
+            var split = str.Split('e');
+            scienceNum.baseValue = Convert.ToSingle(split[0]);
+            scienceNum.eFactor = Convert.ToInt32(split[1]);
+            return scienceNum;
+        }
     }
 }
 
