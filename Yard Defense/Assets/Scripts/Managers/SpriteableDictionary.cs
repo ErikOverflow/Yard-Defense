@@ -9,9 +9,16 @@ namespace YardDefense
         public static SpriteableDictionary Instance;
         [SerializeField] SpriteableObject[] spriteableObjects;
         Dictionary<string, Sprite> spriteDictionary;
+        
         private void Awake()
         {
-            Instance = this;
+            if(instance == null)
+                Instance = this;
+            else
+            {
+                Destroy(this);
+                return;
+            }
             spriteDictionary = new Dictionary<string, Sprite>();
             spriteableObjects = Resources.FindObjectsOfTypeAll<SpriteableObject>();
             foreach (SpriteableObject so in spriteableObjects)

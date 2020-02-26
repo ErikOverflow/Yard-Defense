@@ -13,7 +13,10 @@ namespace YardDefense
 
         private void Awake()
         {
-            Instance = this;
+            if(instance == null)
+                Instance = this;
+            else
+                Destroy(this);
         }
 
         /// <summary>
@@ -53,6 +56,5 @@ namespace YardDefense
         {
             OnMobDied?.Invoke(mobInfo);
         }
-
     }
 }

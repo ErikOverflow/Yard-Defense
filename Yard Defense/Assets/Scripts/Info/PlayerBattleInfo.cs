@@ -4,10 +4,8 @@ using UnityEngine;
 
 namespace YardDefense.Player
 {
-    public class PlayerInfo : MonoBehaviour
+    public class PlayerBattleInfo : MonoBehaviour
     {
-        [SerializeField] PlayerLevelData levelData;
-        
         [SerializeField] ScienceNum currentHealth;
         [SerializeField] ScienceNum maxHealth;
         [SerializeField] ScienceNum attack;

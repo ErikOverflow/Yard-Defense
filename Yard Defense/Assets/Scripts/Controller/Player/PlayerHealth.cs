@@ -5,25 +5,30 @@ using UnityEngine;
 #pragma warning disable 649
 namespace YardDefense.Player
 {
-    public class PlayerHealth : MonoBehaviour
+    public class PlayerHealthController : MonoBehaviour
     {
-        [SerializeField] PlayerInfo playerInfo;
+        [SerializeField] PlayerBattleInfo playerBattleInfo;
         [SerializeField] float healFrequency = 1.0f;
         float timer;
         
-        private void Awake()
+        private void OnEnable()
         {
             EventManager.Instance.OnMobAttack += TakeDamage;
             timer = 0f;
+        }
+        
+        private void OnDisable()
+        {
+            EventManager.Instance.OnMobAttack -= TakeDamage;
         }
 
         //Taking damage from Events
         private void TakeDamage(ScienceNum damageAmount)
         {
-            damageAmount -= playerInfo.defense;
+            damageAmount -= playerBattleInfo.defense;
             if(damageAmount < 0)
                 damageAmount = 0;
-            playerInfo.ChangeHealth(playerInfo.CurrentHealth - damageAmount);
+            playerBattleInfo.ChangeHealth(playerBattleInfo.CurrentHealth - damageAmount);
         }
         
         //Automatic healing
@@ -33,7 +38,7 @@ namespace YardDefense.Player
             if (timer > healFrequency)
             {
                 timer -= healFrequency;
-                playerInfo.ChangeHealth(playerInfo.CurrentHealth + playerInfo.HealthRegen);
+                playerBattleInfo.ChangeHealth(playerBattleInfo.CurrentHealth + playerBattleInfo.HealthRegen);
             }
         }
     }

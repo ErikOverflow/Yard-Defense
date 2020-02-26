@@ -8,16 +8,10 @@ namespace YardDefense.Mob
     {
         [SerializeField] MobInfo mobInfo;
         [SerializeField] SpriteRenderer spriteRenderer;
-        [SerializeField] MobSO _mobSO;
 
-        private void Awake()
+        void Awake()
         {
-            Initialize(_mobSO);
-        }
-
-        //This should be initialized by a spawner in the future
-        public void Initialize(MobSO mobSO)
-        {
+            MobSO mobSO = BattleManager.Instance.MobSO;
             spriteRenderer.sprite = mobSO.sprite;
             mobInfo.Initialize(
                 mobSO.name,

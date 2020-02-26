@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ namespace YardDefense.Player
 {
     public class PlayerAttack : MonoBehaviour
     {
-        [SerializeField] PlayerInfo playerInfo;
+        [SerializeField] PlayerBattleInfo playerBattleInfo;
         float timer;
 
         private void Awake()
@@ -19,17 +19,17 @@ namespace YardDefense.Player
         {
             //Automated attacking
             timer += Time.deltaTime;
-            if (timer > playerInfo.AttackFrequency)
+            if (timer > playerBattleInfo.AttackFrequency)
             {
-                timer -= playerInfo.AttackFrequency;
-                EventManager.Instance.PlayerAttack(playerInfo.Attack);
+                timer -= playerBattleInfo.AttackFrequency;
+                EventManager.Instance.PlayerAttack(playerBattleInfo.Attack);
             }
 
             //Manual attacking (via clicks)
 #if !UNITY_IOS && !UNITY_ANDROID
             if (Input.GetMouseButtonDown(0))
             {
-                EventManager.Instance.PlayerAttack(playerInfo.Attack);
+                EventManager.Instance.PlayerAttack(playerBattleInfo.Attack);
             }
 #endif
         }
