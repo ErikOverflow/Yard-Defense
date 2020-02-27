@@ -21,6 +21,22 @@ namespace YardDefense.Player
         public ScienceNum HealthRegen { get => healthRegen; }
         public float AttackFrequency { get => attackFrequency; }
 
+        public void Initialize(
+            ScienceNum _maxHealth,
+            ScienceNum _attack,
+            ScienceNum _defense,
+            ScienceNum _healthRegen,
+            float _attackFrequency
+            )
+        {
+            maxHealth = _maxHealth;
+            attack = _attack;
+            defense = _defense;
+            healthRegen = _healthRegen;
+            attackFrequency = _attackFrequency;
+            ChangeHealth(maxHealth);
+        }
+
         public void ChangeHealth(ScienceNum newHealth)
         {
             currentHealth = newHealth;

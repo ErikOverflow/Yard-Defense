@@ -656,10 +656,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLevelData:
-    attack: 0
-    defense: 0
-    health: 0
-    healthRegen: 0
+    attack:
+      baseValue: 1
+      eFactor: 1
+    defense:
+      baseValue: 0
+      eFactor: 0
+    health:
+      baseValue: 1
+      eFactor: 2
+    healthRegen:
+      baseValue: 1
+      eFactor: 0
   collar:
     id: 0
     name: 
