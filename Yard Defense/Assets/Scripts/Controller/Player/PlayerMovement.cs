@@ -7,16 +7,18 @@ namespace YardDefense.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] float moveSpeed;
+        [SerializeField] Rigidbody2D rb2d;
 
+        private void Update()
+        {
+            Vector2 moveDir = new Vector2(Input.GetAxis("Horizontal"), 0);
+            MovePlayer(moveDir);
         }
 
-        // Update is called once per frame
-        void Update()
+        private void MovePlayer(Vector2 moveDir)
         {
-
+            rb2d.velocity = moveDir * moveSpeed;
         }
     }
 }
