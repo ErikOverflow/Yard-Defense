@@ -8,7 +8,7 @@ namespace YardDefense.Mob
 {
     public class MobDeath : MonoBehaviour
     {
-        [SerializeField] MobInfo mobInfo;
+        [SerializeField] MobBattleInfo mobBattleInfo;
 
         private void Awake()
         {
@@ -17,9 +17,9 @@ namespace YardDefense.Mob
 
         private void CheckForDeath()
         {
-            if(mobInfo.CurrentHealth.baseValue <= 0)
+            if(mobBattleInfo.CurrentHealth.baseValue <= 0)
             {
-                EventManager.Instance.MobDied(mobInfo);
+                EventManager.Instance.MobDied(mobBattleInfo);
             }
         }
     }

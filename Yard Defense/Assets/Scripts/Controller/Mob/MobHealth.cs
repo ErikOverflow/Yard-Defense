@@ -8,7 +8,7 @@ namespace YardDefense.Mob
 {
     public class MobHealth : MonoBehaviour
     {
-        [SerializeField] MobInfo mobInfo;
+        [SerializeField] MobBattleInfo mobBattleInfo;
 
         private void OnEnable()
         {
@@ -24,7 +24,7 @@ namespace YardDefense.Mob
 
         private void DisableHealth(MobInfo _mobInfo)
         {
-            if(mobInfo == _mobInfo)
+            if(mobBattleInfo == _mobInfo)
             {
                 this.enabled = false;
             }
@@ -32,7 +32,7 @@ namespace YardDefense.Mob
 
         private void TakeDamage(ScienceNum damageAmount)
         {
-            mobInfo.ChangeHealth(mobInfo.CurrentHealth - damageAmount);
+            mobBattleInfo.ChangeHealth(mobBattleInfo.CurrentHealth - damageAmount);
         }
     }
 }

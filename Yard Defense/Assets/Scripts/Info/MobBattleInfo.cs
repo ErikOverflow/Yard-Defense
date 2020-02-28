@@ -1,11 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 #pragma warning disable 649
 namespace YardDefense.Mob
 {
-    public class MobInfo : MonoBehaviour
+    public class MobBattleInfo : MonoBehaviour
     {
         [SerializeField] string mobName = "Mob";
         [SerializeField] ScienceNum currentHealth;

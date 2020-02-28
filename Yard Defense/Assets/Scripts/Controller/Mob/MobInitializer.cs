@@ -1,24 +1,24 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 #pragma warning disable 649
 namespace YardDefense.Mob
 {
-    public class MobInitializer : MonoBehaviour
+    public class MobBattleInitializer : MonoBehaviour
     {
-        [SerializeField] MobInfo mobInfo;
+        [SerializeField] MobBattleInfo mobBattleInfo;
         [SerializeField] SpriteRenderer spriteRenderer;
 
         void Awake()
         {
-            MobSO mobSO = BattleManager.Instance.MobSO;
-            spriteRenderer.sprite = mobSO.sprite;
-            mobInfo.Initialize(
-                mobSO.name,
-                mobSO.health,
-                mobSO.attackDamage,
-                mobSO.attackFrequency
+            MobInfo mob = BattleManager.Instance.Mob;
+            spriteRenderer.sprite = mob.MobSO.sprite;
+            mobBattleInfo.Initialize(
+                mob.MobSO.name,
+                mob.MobSO.health * mob.DifficultyScale,
+                mob.MobSO.attackDamage * mob.DifficultyScale,
+                mob.MobSO.attackFrequency
                 );
         }
     }

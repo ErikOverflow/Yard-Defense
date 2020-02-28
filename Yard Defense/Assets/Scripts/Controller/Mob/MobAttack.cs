@@ -8,7 +8,7 @@ namespace YardDefense.Mob
 {
     public class MobAttack : MonoBehaviour
     {
-        [SerializeField] MobInfo mobInfo;
+        [SerializeField] MobBattleInfo mobBattleInfo;
         float timer;
 
         private void OnEnable()
@@ -24,17 +24,17 @@ namespace YardDefense.Mob
 
         private void DisableAttacking(MobInfo _mobInfo)
         {
-            if (mobInfo == _mobInfo)
+            if (mobBattleInfo == _mobInfo)
                 this.enabled = false;
         }
 
         private void Update()
         {
             timer += Time.deltaTime;
-            if (timer > mobInfo.AttackFrequency)
+            if (timer > mobBattleInfo.AttackFrequency)
             {
-                timer -= mobInfo.AttackFrequency;
-                EventManager.Instance.MobAttack(mobInfo.AttackDamage);
+                timer -= mobBattleInfo.AttackFrequency;
+                EventManager.Instance.MobAttack(mobBattleInfo.AttackDamage);
             } 
         }
     }

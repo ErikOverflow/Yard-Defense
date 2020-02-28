@@ -14,9 +14,9 @@ namespace YardDefense
         public static BattleManager Instance;
         [SerializeField] PlayerStatsInfo playerInfo;
         
-        [SerializeField] MobSO mob;
+        [SerializeField] MobInfo mob;
         
-        public MobSO MobSO { get => mob; }
+        public MobInfo Mob { get => mob; }
         public PlayerStatsInfo PlayerStatsInfo { get=> playerInfo; }
         
         void Awake()
@@ -31,7 +31,7 @@ namespace YardDefense
         }
 
         //Start a battle against the mob
-        public void StartBattle(MobSO _mob)
+        public void StartBattle(MobInfo _mob)
         {
             mob = _mob;
             SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
