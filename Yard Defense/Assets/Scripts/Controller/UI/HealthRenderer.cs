@@ -16,7 +16,7 @@ namespace YardDefense.UI
         [SerializeField] PlayerBattleInfo playerBattleInfo;
 
         [SerializeField] Slider mobHPSlider;
-        [SerializeField] MobInfo mobInfo;
+        [SerializeField] MobBattleInfo mobBattleInfo;
 
         private void Awake()
         {
@@ -41,7 +41,7 @@ namespace YardDefense.UI
         {
             mobHPSlider.minValue = 0;
             mobHPSlider.maxValue = 1;
-            mobHPSlider.value = (mobInfo.CurrentHealth / mobInfo.MaxHealth).Conversion();
+            mobHPSlider.value = (mobBattleInfo.CurrentHealth / mobBattleInfo.MaxHealth).Conversion();
         }
     }
 }

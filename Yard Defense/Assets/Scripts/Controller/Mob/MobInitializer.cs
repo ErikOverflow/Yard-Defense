@@ -5,7 +5,7 @@ using UnityEngine;
 #pragma warning disable 649
 namespace YardDefense.Mob
 {
-    public class MobBattleInitializer : MonoBehaviour
+    public class MobInitializer : MonoBehaviour
     {
         [SerializeField] MobBattleInfo mobBattleInfo;
         [SerializeField] SpriteRenderer spriteRenderer;

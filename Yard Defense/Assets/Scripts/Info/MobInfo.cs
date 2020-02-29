@@ -14,7 +14,15 @@ namespace YardDefense.Mob
         
         public MobSO MobSO { get => mobSO; }
         public ScienceNum DifficultyScale { get => difficultyScale; }
-        
+
+        private void Start()
+        {
+            if(mobSO != null)
+            {
+                Spawn(mobSO, difficultyScale);
+            }
+        }
+
         public void Spawn(MobSO _mobSO, ScienceNum _difficultyScale)
         {
             mobSO = _mobSO;

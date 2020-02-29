@@ -22,9 +22,9 @@ namespace YardDefense.Mob
             EventManager.Instance.OnMobDied -= DisableHealth;
         }
 
-        private void DisableHealth(MobInfo _mobInfo)
+        private void DisableHealth(MobBattleInfo _mobBattleInfo)
         {
-            if(mobBattleInfo == _mobInfo)
+            if(mobBattleInfo == _mobBattleInfo)
             {
                 this.enabled = false;
             }

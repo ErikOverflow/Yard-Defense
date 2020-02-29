@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 0}
-  mob: {fileID: 11400000, guid: 17ae7949dafeda1489e8bc46081dd89c, type: 2}
+  mob: {fileID: 0}
 --- !u!1 &669380661
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +934,7 @@ MonoBehaviour:
   playerHPSlider: {fileID: 1167312036}
   playerBattleInfo: {fileID: 754129888}
   mobHPSlider: {fileID: 489842165}
-  mobInfo: {fileID: 1459419972}
+  mobBattleInfo: {fileID: 1459419972}
 --- !u!1 &1459419965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14dc5811ca1c94746aba3c835ef7e388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobInfo: {fileID: 1459419972}
+  mobBattleInfo: {fileID: 1459419972}
   spriteRenderer: {fileID: 1459419966}
 --- !u!114 &1459419969
 MonoBehaviour:
@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb42bffe16e74f44bb32eeeeac911554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobInfo: {fileID: 1459419972}
+  mobBattleInfo: {fileID: 1459419972}
 --- !u!114 &1459419970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0654724d5fea42a3a35a03c17dae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobInfo: {fileID: 1459419972}
+  mobBattleInfo: {fileID: 1459419972}
 --- !u!114 &1459419971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3dccf94c9afd742952916167ca740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobInfo: {fileID: 1459419972}
+  mobBattleInfo: {fileID: 1459419972}
 --- !u!114 &1459419972
 MonoBehaviour:
   m_ObjectHideFlags: 0
