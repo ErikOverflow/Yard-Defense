@@ -8,6 +8,7 @@ namespace YardDefense.Mob
 {
     public class MobInfo : MonoBehaviour
     {
+        //mobSO should be null when this is attached to a prefab for spawning mobs, otherwise you waste CPU cycles double-initializing
         [SerializeField] MobSO mobSO;
         [SerializeField] ScienceNum difficultyScale;
         [SerializeField] SpriteRenderer spriteRenderer;
@@ -19,11 +20,11 @@ namespace YardDefense.Mob
         {
             if(mobSO != null)
             {
-                Spawn(mobSO, difficultyScale);
+                Initialize(mobSO, difficultyScale);
             }
         }
 
-        public void Spawn(MobSO _mobSO, ScienceNum _difficultyScale)
+        public void Initialize(MobSO _mobSO, ScienceNum _difficultyScale)
         {
             mobSO = _mobSO;
             difficultyScale = _difficultyScale;
