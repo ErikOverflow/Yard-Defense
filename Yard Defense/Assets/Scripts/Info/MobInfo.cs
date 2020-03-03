@@ -10,10 +10,12 @@ namespace YardDefense.Mob
     {
         //mobSO should be null when this is attached to a prefab for spawning mobs, otherwise you waste CPU cycles double-initializing
         [SerializeField] MobSO mobSO;
+        [SerializeField] ItemData itemData;
         [SerializeField] ScienceNum difficultyScale;
         [SerializeField] SpriteRenderer spriteRenderer;
         
         public MobSO MobSO { get => mobSO; }
+        public ItemData ItemData {get => itemData; }
         public ScienceNum DifficultyScale { get => difficultyScale; }
 
         private void Start()
@@ -29,6 +31,7 @@ namespace YardDefense.Mob
             mobSO = _mobSO;
             difficultyScale = _difficultyScale;
             spriteRenderer.sprite = mobSO.sprite;
+            itemData = new ItemData{};
         }
     }
 }

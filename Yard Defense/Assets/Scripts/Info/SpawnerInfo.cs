@@ -19,7 +19,6 @@ namespace YardDefense.Mob
         void Awake()
         {
             spawnedMobs = new HashSet<MobInfo>();
-            EventManager.Instance.OnMobDied += MobDied;
         }
         
         public void MobSpawned(MobInfo mobInfo)
@@ -27,7 +26,7 @@ namespace YardDefense.Mob
             spawnedMobs.Add(mobInfo);
         }
         
-        private void MobDied(MobInfo mobInfo)
+        private void RemoveMob(MobInfo mobInfo)
         {
             spawnedMobs.Remove(mobInfo);
         }

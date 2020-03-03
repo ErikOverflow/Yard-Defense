@@ -19,12 +19,14 @@ namespace YardDefense.Mob
         private void Awake()
         {
             EventManager.Instance.OnWaveChanged += PoofAwayMobs;
+            EventManager.Instance.OnMobDied += spawnerInfo.RemoveMob;
             timer = 0;
         }
         
         private void OnDestroy()
         {
             EventManager.Instance.OnWaveChanged -= PoofAwayMobs;
+            EventManager.Instance.OnMobDied -= spawnerInfo.RemoveMob;
         }
 
         void Update()
