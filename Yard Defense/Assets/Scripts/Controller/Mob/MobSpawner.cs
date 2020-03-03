@@ -12,13 +12,27 @@ namespace YardDefense.Mob
         [SerializeField] WaveInfo waveInfo;
         [SerializeField] MobScaler mobScaler;
         [SerializeField] GameObject mobPrefab;
+        [SerializeField] Transform yardRoot;
         [SerializeField] int spawnLimit = 3;
         [SerializeField] float spawnTimer = 2f;
         float timer;
 
+        int spawnedMobsCount;
+
+        private void Awake()
+        {
+            EventManager.Instance.OnMobSpawned += MobSpawned;
+        }
+
+        private void MobSpawned(MobInfo mobInfo)
+        {
+            spawnedMobsCount++;
+        }
+
         private void Start()
         {
             timer = 0;
+            spawnedMobsCount = 0;
         }
 
         void Update()
@@ -28,8 +42,12 @@ namespace YardDefense.Mob
             {
                 timer -= spawnTimer;
 
+                if (spawnedMobsCount >= spawnLimit)
+                    return;
 
                 GameObject go = ObjectPooler.Instance.GetPooledObject(mobPrefab);
+                go.transform.SetParent(yardRoot);
+                go.transform.localPosition = Vector3.zero;
 
                 //Use object pooler to instantiate mobPrefab
                 MobInfo mobInfo = go.GetComponent<MobInfo>();

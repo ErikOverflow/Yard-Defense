@@ -10,9 +10,19 @@ namespace YardDefense.Mob
         [SerializeField] MobBattleInfo mobBattleInfo;
         [SerializeField] SpriteRenderer spriteRenderer;
 
-        void Awake()
+        void Start()
         {
             MobInfo mob = BattleManager.Instance.Mob;
+            if(mob == null)
+            {
+                mobBattleInfo.Initialize(
+                    "TestMob",
+                    new ScienceNum { baseValue = 10 },
+                    new ScienceNum { baseValue = 2 },
+                    1f
+                    );
+                return;
+            }
             spriteRenderer.sprite = mob.MobSO.sprite;
             mobBattleInfo.Initialize(
                 mob.MobSO.name,

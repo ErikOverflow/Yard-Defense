@@ -48,6 +48,18 @@ namespace YardDefense
             OnNewMaxWave?.Invoke();
         }
 
+        public event Action OnBattleStarted;
+        public void BattleStarted()
+        {
+            OnBattleStarted?.Invoke();
+        }
+
+        public event Action OnBattleEnded;
+        public void BattleEnded()
+        {
+            OnBattleEnded?.Invoke();
+        }
+
         public event Action OnPlayerHealthChanged;
         public void PlayerHealthChanged()
         {

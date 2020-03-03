@@ -28,18 +28,41 @@ namespace YardDefense
                 Destroy(this);
                 return;
             }
+
+            EventManager.Instance.OnMobDied += EndBattle;
         }
 
         //Start a battle against the mob
         public void StartBattle(MobInfo _mob)
         {
             mob = _mob;
-            SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
+            mob.gameObject.SetActive(false);
+            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
+            StartCoroutine(BattleLoader(sceneLoad));
+        }
+
+        IEnumerator BattleLoader(AsyncOperation sceneLoad)
+        {
+            while(!sceneLoad.isDone)
+            {
+                yield return null;
+            }
+            EventManager.Instance.BattleStarted();
         }
         
-        public void EndBattle()
+        public void EndBattle(MobBattleInfo mobBattleInfo)
         {
-            SceneManager.UnloadSceneAsync("BattleScene");
+            AsyncOperation sceneLoad = SceneManager.UnloadSceneAsync("BattleScene");
+            StartCoroutine(BattleUnloader(sceneLoad));
+        }
+
+        IEnumerator BattleUnloader(AsyncOperation sceneLoad)
+        {
+            while (!sceneLoad.isDone)
+            {
+                yield return null;
+            }
+            EventManager.Instance.BattleEnded();
         }
     }
 }

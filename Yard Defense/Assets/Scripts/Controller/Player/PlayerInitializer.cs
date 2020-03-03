@@ -12,6 +12,16 @@ namespace YardDefense.Player
         private void Awake()
         {
             PlayerStatsInfo psi = BattleManager.Instance.PlayerStatsInfo;
+            if (psi == null)
+            {
+                playerBattleInfo.Initialize(
+                    new ScienceNum { baseValue = 100 },
+                    new ScienceNum { baseValue = 1 },
+                    new ScienceNum { baseValue = 0 },
+                    new ScienceNum { baseValue = 0 },
+                    0.5f);
+                return;
+            }
             playerBattleInfo.Initialize(
                 psi.PlayerLevelData.HealthSN,
                 psi.PlayerLevelData.AttackSN,
