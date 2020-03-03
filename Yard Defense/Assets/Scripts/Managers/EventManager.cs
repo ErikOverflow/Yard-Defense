@@ -30,6 +30,24 @@ namespace YardDefense
             OnPlayerAttack?.Invoke(damage);
         }
 
+        public event Action OnWaveChanged;
+        public void WaveChanged()
+        {
+            OnWaveChanged?.Invoke();
+        }
+
+        public event Action OnProgressChanged;
+        public void ProgressChanged()
+        {
+            OnProgressChanged?.Invoke();
+        }
+
+        public event Action OnNewMaxWave;
+        internal void NewMaxWave()
+        {
+            OnNewMaxWave?.Invoke();
+        }
+
         public event Action OnPlayerHealthChanged;
         public void PlayerHealthChanged()
         {
@@ -62,6 +80,12 @@ namespace YardDefense
         public void ItemCollision(ItemData itemData)
         {
             OnItemCollision?.Invoke(itemData);
+        }
+
+        public event Action<MobInfo> OnMobSpawned;
+        public void MobSpawned(MobInfo mobInfo)
+        {
+            OnMobSpawned?.Invoke(mobInfo);
         }
     }
 }

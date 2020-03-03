@@ -14,16 +14,23 @@ namespace YardDefense.Mob
         [SerializeField] GameObject mobPrefab;
         [SerializeField] int spawnLimit = 3;
         [SerializeField] float spawnTimer = 2f;
-        
+        float timer;
+
+        private void Start()
+        {
+            timer = 0;
+        }
+
         void Update()
         {
             timer += Time.deltaTime;
             if (timer > spawnTimer)
             {
                 timer -= spawnTimer;
-                
-                
-                
+
+
+                GameObject go = ObjectPooler.Instance.GetPooledObject(mobPrefab);
+
                 //Use object pooler to instantiate mobPrefab
                 MobInfo mobInfo = go.GetComponent<MobInfo>();
                 
@@ -35,10 +42,10 @@ namespace YardDefense.Mob
                 }
                 
                 //Pick a random number up to the maximum weight
-                float randMob = Random.Range(0f, totalWeight);
+                float randMob = UnityEngine.Random.Range(0f, totalWeight);
                 
                 //Iterate through the mobs until that weight is reached.
-                MobSO mob;
+                MobSO mob = null;
                 foreach(WeightedMob wm in waveInfo.CurrentWave.mobs)
                 {
                     randMob -= wm.weight;

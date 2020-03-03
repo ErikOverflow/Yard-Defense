@@ -14,7 +14,6 @@ namespace YardDefense.Mob
         [SerializeField] int mobsDefeatedInWave = 0;
         
         public int CurrentWaveNum { get => currentWaveNum; }
-        public bool Boss { get => boss; }
         public NeighborhoodSO NeighborhoodSO { get => neighborhoodSO; }
         
         public void MobDefeated()
