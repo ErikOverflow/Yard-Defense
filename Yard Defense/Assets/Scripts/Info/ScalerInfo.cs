@@ -6,7 +6,7 @@ using UnityEngine;
 #pragma warning disable 649
 namespace YardDefense.Mob
 {
-    public class MobScaler : MonoBehaviour
+    public class ScalerInfo : MonoBehaviour
     {
         [SerializeField] ProgressInfo progressInfo;
         [SerializeField] ScienceNum scalingPerWave;

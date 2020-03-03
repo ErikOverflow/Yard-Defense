@@ -10,39 +10,31 @@ namespace YardDefense.Mob
     {
         //Prefab for a mob you see in the yard, NOT a battle mob.
         [SerializeField] WaveInfo waveInfo;
-        [SerializeField] MobScaler mobScaler;
+        [SerializeField] ScalerInfo scalerInfo;
+        [SerializeField] SpawnerInfo spawnerInfo;
         [SerializeField] GameObject mobPrefab;
         [SerializeField] Transform yardRoot;
-        [SerializeField] int spawnLimit = 3;
-        [SerializeField] float spawnTimer = 2f;
         float timer;
-
-        int spawnedMobsCount;
 
         private void Awake()
         {
-            EventManager.Instance.OnMobSpawned += MobSpawned;
-        }
-
-        private void MobSpawned(MobInfo mobInfo)
-        {
-            spawnedMobsCount++;
-        }
-
-        private void Start()
-        {
+            EventManager.Instance.OnWaveChanged += PoofAwayMobs;
             timer = 0;
-            spawnedMobsCount = 0;
+        }
+        
+        private void OnDestroy()
+        {
+            EventManager.Instance.OnWaveChanged -= PoofAwayMobs;
         }
 
         void Update()
         {
             timer += Time.deltaTime;
-            if (timer > spawnTimer)
+            if (timer > spawnerInfo.SpawnTimer)
             {
-                timer -= spawnTimer;
+                timer -= spawnerInfo.SpawnTimer;
 
-                if (spawnedMobsCount >= spawnLimit)
+                if (spawnerInfo.SpawnCount >= spawnerInfo.SpawnLimit)
                     return;
 
                 GameObject go = ObjectPooler.Instance.GetPooledObject(mobPrefab);
@@ -74,9 +66,22 @@ namespace YardDefense.Mob
                     }
                 }
                 
-                mobInfo.Initialize(mob, mobScaler.DifficultyScale);
+                mobInfo.Initialize(mob, scalerInfo.DifficultyScale);
+                //Update the spawnerInfo with this specific mob
+                spawnerInfo.MobSpawned(mobInfo);
+                //Generic event stating a mob has spawned
                 EventManager.Instance.MobSpawned(mobInfo);
             } 
+        }
+        
+        void PoofAwayMobs()
+        {
+            foreach(MobInfo mi in spawnerInfo.GetAllMobs())
+            {
+                //Insert a poof animation at the mob's location if desired
+                mi.gameObject.SetActive(false);
+            }
+            spawnerInfo.ReleaseAllMobs();
         }
     }
 }

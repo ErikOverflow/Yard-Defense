@@ -11,13 +11,13 @@ namespace YardDefense.Mob
         [SerializeField] MobBattleInfo mobBattleInfo;
         float timer;
 
-        private void OnEnable()
+        private void Awake()
         {
             timer = 0f;
             EventManager.Instance.OnMobDied += DisableAttacking;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             EventManager.Instance.OnMobDied -= DisableAttacking;
         }

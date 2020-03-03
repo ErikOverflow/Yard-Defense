@@ -15,5 +15,10 @@ namespace YardDefense.Player
         {
             EventManager.Instance.OnItemCollision += playerInventoryInfo.AddItem;
         }
+        
+        private void OnDestroy()
+        {
+            EventManager.Instance.OnItemCollision -= playerInventoryInfo.AddItem;
+        }
     }
 }

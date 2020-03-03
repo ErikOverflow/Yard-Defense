@@ -11,13 +11,13 @@ namespace YardDefense.Player
         [SerializeField] float healFrequency = 1.0f;
         float timer;
         
-        private void OnEnable()
+        private void Awake()
         {
             EventManager.Instance.OnMobAttack += TakeDamage;
             timer = 0f;
         }
         
-        private void OnDisable()
+        private void OnDestroy()
         {
             EventManager.Instance.OnMobAttack -= TakeDamage;
         }

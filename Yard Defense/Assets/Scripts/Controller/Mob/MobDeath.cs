@@ -10,12 +10,12 @@ namespace YardDefense.Mob
     {
         [SerializeField] MobBattleInfo mobBattleInfo;
 
-        private void OnEnable()
+        private void Awake()
         {
             EventManager.Instance.OnMobHealthChanged += CheckForDeath;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             EventManager.Instance.OnMobHealthChanged -= CheckForDeath;
         }

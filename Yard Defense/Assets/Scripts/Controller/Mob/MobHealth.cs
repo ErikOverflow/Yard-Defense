@@ -10,13 +10,13 @@ namespace YardDefense.Mob
     {
         [SerializeField] MobBattleInfo mobBattleInfo;
 
-        private void OnEnable()
+        private void Awake()
         {
             EventManager.Instance.OnPlayerAttack += TakeDamage;
             EventManager.Instance.OnMobDied += DisableHealth;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             EventManager.Instance.OnPlayerAttack -= TakeDamage;
             EventManager.Instance.OnMobDied -= DisableHealth;

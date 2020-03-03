@@ -18,13 +18,13 @@ namespace YardDefense.UI
         [SerializeField] Slider mobHPSlider;
         [SerializeField] MobBattleInfo mobBattleInfo;
 
-        private void OnEnable()
+        private void Awake()
         {
             EventManager.Instance.OnMobHealthChanged += UpdateMobHealth;
             EventManager.Instance.OnPlayerHealthChanged += UpdatePlayerHealth;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             EventManager.Instance.OnMobHealthChanged -= UpdateMobHealth;
             EventManager.Instance.OnPlayerHealthChanged -= UpdatePlayerHealth;
