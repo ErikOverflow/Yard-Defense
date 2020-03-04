@@ -10,15 +10,21 @@ namespace YardDefense.Player
         [SerializeField] float moveSpeed;
         [SerializeField] Rigidbody2D rb2d;
 
+        float moveX;
+
         private void Update()
         {
-            Vector2 moveDir = new Vector2(Input.GetAxis("Horizontal"), 0);
-            MovePlayer(moveDir);
+            moveX = Input.GetAxis("Horizontal");
         }
 
-        private void MovePlayer(Vector2 moveDir)
+        private void FixedUpdate()
         {
-            rb2d.velocity = moveDir * moveSpeed;
+            MovePlayer();
+        }
+
+        private void MovePlayer()
+        {
+            rb2d.velocity = new Vector2(moveX* moveSpeed, rb2d.velocity.y);
         }
     }
 }

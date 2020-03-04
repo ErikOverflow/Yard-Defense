@@ -25,13 +25,16 @@ namespace YardDefense.Item
         
         void DropItemIfExists(MobInfo mobInfo)
         {
-            if(mobInfo.ItemData == null)
+            if(mobInfo.ItemData.Id <= 0)
                 return;
             ItemData item = mobInfo.ItemData;
             GameObject go = ObjectPooler.Instance.GetPooledObject(itemPrefab);
             ItemInfo itemInfo = go.GetComponent<ItemInfo>();
+            SpriteRenderer sr = go.GetComponent<SpriteRenderer>();
+            itemInfo.Initialize(item);
+            sr.sprite = SpriteableDictionary.Instance.GetSprite(item.Name);
             go.transform.SetParent(backyard);
-            go.transform.position = mobInfo.transform.position;
+            go.transform.position = mobInfo.transform.position + Vector3.up;
         }
     }
 }

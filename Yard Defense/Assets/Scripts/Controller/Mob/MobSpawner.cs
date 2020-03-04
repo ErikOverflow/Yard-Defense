@@ -13,7 +13,6 @@ namespace YardDefense.Mob
         [SerializeField] ScalerInfo scalerInfo;
         [SerializeField] SpawnerInfo spawnerInfo;
         [SerializeField] GameObject mobPrefab;
-        [SerializeField] Transform yardRoot;
         float timer;
 
         private void Awake()
@@ -45,7 +44,7 @@ namespace YardDefense.Mob
                     return;
 
                 GameObject go = ObjectPooler.Instance.GetPooledObject(mobPrefab);
-                go.transform.SetParent(yardRoot);
+                go.transform.SetParent(spawnerInfo.SpawnPoint);
                 go.transform.localPosition = Vector3.zero;
 
                 //Use object pooler to instantiate mobPrefab
