@@ -19,7 +19,8 @@ namespace YardDefense.Mob
                     "TestMob",
                     new ScienceNum { baseValue = 10 },
                     new ScienceNum { baseValue = 2 },
-                    1f
+                    1f,
+                    null
                     );
                 return;
             }
@@ -28,7 +29,8 @@ namespace YardDefense.Mob
                 mob.MobSO.name,
                 mob.MobSO.health * mob.DifficultyScale,
                 mob.MobSO.attackDamage * mob.DifficultyScale,
-                mob.MobSO.attackFrequency
+                mob.MobSO.attackFrequency,
+                mob
                 );
         }
     }

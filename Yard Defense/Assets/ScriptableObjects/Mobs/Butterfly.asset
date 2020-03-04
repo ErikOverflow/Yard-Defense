@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Butterfly
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: e12ad8cc1b7602f4a875e5a8f98d6443, type: 3}
+  item: {fileID: 11400000, guid: 47567599349424ae58d67b5e46cc97da, type: 2}
   health:
     baseValue: 1
     eFactor: 2

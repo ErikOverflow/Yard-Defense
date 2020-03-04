@@ -24,7 +24,7 @@ namespace YardDefense.Mob
         {
             if(mobBattleInfo.CurrentHealth.baseValue <= 0)
             {
-                EventManager.Instance.MobDied(mobBattleInfo);
+                EventManager.Instance.MobDied(mobBattleInfo.MobInfo);
             }
         }
     }

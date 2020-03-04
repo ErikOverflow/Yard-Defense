@@ -13,8 +13,9 @@ namespace YardDefense
     {
         public static BattleManager Instance;
         [SerializeField] PlayerStatsInfo playerInfo;
-        
         [SerializeField] MobInfo mob;
+
+        bool inBattle;
         
         public MobInfo Mob { get => mob; }
         public PlayerStatsInfo PlayerStatsInfo { get=> playerInfo; }
@@ -35,6 +36,9 @@ namespace YardDefense
         //Start a battle against the mob
         public void StartBattle(MobInfo _mob)
         {
+            if (inBattle)
+                return;
+            inBattle = true;
             mob = _mob;
             mob.gameObject.SetActive(false);
             AsyncOperation sceneLoad = SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
@@ -50,8 +54,9 @@ namespace YardDefense
             EventManager.Instance.BattleStarted();
         }
         
-        public void EndBattle(MobBattleInfo mobBattleInfo)
+        public void EndBattle(MobInfo mobInfo)
         {
+            inBattle = false;
             AsyncOperation sceneLoad = SceneManager.UnloadSceneAsync("BattleScene");
             StartCoroutine(BattleUnloader(sceneLoad));
         }

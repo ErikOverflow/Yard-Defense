@@ -10,7 +10,7 @@ public class PoolableObject : MonoBehaviour
 
     private void OnDisable()
     {
-        if (prefab != null)
+        if (prefab != null && gameObject != null)
             ObjectPooler.Instance.ReleasePooledObject(this);
     }
 }

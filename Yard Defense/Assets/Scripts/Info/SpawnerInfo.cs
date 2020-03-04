@@ -26,7 +26,7 @@ namespace YardDefense.Mob
             spawnedMobs.Add(mobInfo);
         }
         
-        private void RemoveMob(MobInfo mobInfo)
+        public void RemoveMob(MobInfo mobInfo)
         {
             spawnedMobs.Remove(mobInfo);
         }

@@ -22,9 +22,9 @@ namespace YardDefense.Mob
             EventManager.Instance.OnMobDied -= DisableAttacking;
         }
 
-        private void DisableAttacking(MobBattleInfo _mobInfo)
+        private void DisableAttacking(MobInfo _mobInfo)
         {
-            if (mobBattleInfo == _mobInfo)
+            if (mobBattleInfo.MobInfo == _mobInfo)
                 this.enabled = false;
         }
 

@@ -84,4 +84,12 @@ public class ObjectPooler : MonoBehaviour
         }
         dict[po.prefab.name].Enqueue(po.gameObject);
     }
+
+    public void DeletePooledObject(PoolableObject po)
+    {
+        if (!dict.ContainsKey(po.prefab.name))
+        {
+            dict.Add(po.prefab.name, new Queue<GameObject>());
+        }
+    }
 }

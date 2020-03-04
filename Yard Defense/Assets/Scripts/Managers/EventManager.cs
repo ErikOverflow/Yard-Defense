@@ -82,10 +82,10 @@ namespace YardDefense
             OnMobHealthChanged?.Invoke();
         }
 
-        public event Action<MobBattleInfo> OnMobDied;
-        public void MobDied(MobBattleInfo mobBattleInfo)
+        public event Action<MobInfo> OnMobDied;
+        public void MobDied(MobInfo mobInfo)
         {
-            OnMobDied?.Invoke(mobBattleInfo);
+            OnMobDied?.Invoke(mobInfo);
         }
 
         public event Action<ItemData> OnItemCollision;

@@ -15,7 +15,7 @@ namespace YardDefense.Item
             if(collision.GetComponent<PlayerMovement>() != null)
             {
                 EventManager.Instance.ItemCollision(itemInfo.ItemData);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
