@@ -9,10 +9,17 @@ namespace YardDefense.Mob
     {
         [SerializeField] Rigidbody2D rb2D;
         [SerializeField] float moveSpeed = 2f;
+        GameObject target;
 
-        private void OnEnable()
+        public void Initialize()
         {
-            rb2D.velocity = new Vector2(-moveSpeed, 0);
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        private void FixedUpdate()
+        {
+            Vector3 targetDir = target.transform.position - rb2D.transform.position;
+            rb2D.velocity = targetDir.normalized * moveSpeed;
         }
     }
 }

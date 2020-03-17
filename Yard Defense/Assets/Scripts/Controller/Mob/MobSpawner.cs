@@ -44,7 +44,7 @@ namespace YardDefense.Mob
                     return;
 
                 GameObject go = ObjectPooler.Instance.GetPooledObject(mobPrefab);
-                go.transform.SetParent(spawnerInfo.SpawnPoint);
+                go.transform.SetParent(spawnerInfo.SpawnPoints[UnityEngine.Random.Range(0, spawnerInfo.SpawnPoints.Length)]);
                 go.transform.localPosition = Vector3.zero;
 
                 //Use object pooler to instantiate mobPrefab
@@ -73,6 +73,8 @@ namespace YardDefense.Mob
                 }
                 
                 mobInfo.Initialize(mob, scalerInfo.DifficultyScale);
+                MobMovement mobMovement = mobInfo.GetComponent<MobMovement>();
+                mobMovement.Initialize();
                 //Update the spawnerInfo with this specific mob
                 spawnerInfo.MobSpawned(mobInfo);
                 //Generic event stating a mob has spawned
